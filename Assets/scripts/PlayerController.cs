@@ -36,8 +36,9 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
 
-        Vector3 projectileDir = (mouseWorldPos - transform.position).normalized;
+        //Vector3 projectileDir = (mouseWorldPos - transform.position).normalized;
+        Vector2 shootDirection = new Vector2(mouseWorldPos.x - transform.position.x, mouseWorldPos.y - transform.position.y).normalized;
 
-        circleObject.GetComponent<Rigidbody2D>().velocity = projectileDir * projectileSpeed;
+        circleObject.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }
 }
